@@ -6,11 +6,22 @@
 
 Se pide implementar la funcionalidad del archivo **.h** provisto. En este achivo se declaran funcionalidades que permiten leer una pokedex desde un archivo con datos de diferentes pokemon y luego realizar operaciones de búsqueda sobre la misma.
 
-Adicionalmente se pide la implementación de ***tp1.c*** que dado un archivo de pokedex y uno o dos parámetros, realiza carga los datos y realiza la operación pedida.
+Adicionalmente se pide la implementación de ***tp1.c*** que dado un archivo de pokedex y dos o tres parámetros, carga los datos y ejecuta la operación pedida.
+
+Por último, es obligatorio implementar ***pruebas_alumno.c*** con pruebas de la funcionalidad de ***pokedex.h***.
+
+## Ejemplos de uso
+
+  - **./tp1 pokedex.csv buscar nombre pikachu**: Busca un pokemon con el nombre pikachu y si lo encuentra muestra la información por pantalla.
+  - **./tp1 pokedex.csv buscar id 25**: Busca un pokemon con el id 25 y si lo encuentra muestra la información por pantalla.
+  - **./tp1 pokedex.csv buscar tipo agua**: Busca uno o mas pokemones con el tipo agua y si los encuentra muestra la información de cada uno por pantalla.
+  - **./tp1 pokedex.csv mostrar nombre**: Muestra todos los pokemon por orden alfabetico
+  - **./tp1 pokedex.csv mostrar id**: Muestra todos los pokemon por orden numerico
 
 <div align="center">
 <img width="70%" src="img/tp1_ejemplo.png">
 </div>
+
 ---
 
 ## Consejos para la elaboración del trabajo
