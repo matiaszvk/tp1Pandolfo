@@ -27,17 +27,29 @@ Por último, es obligatorio implementar ***pruebas_alumno.c*** con pruebas de la
 ## Consejos para la elaboración del trabajo
 
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
+
 **LEER EL ENUNCIADO** primero y luego **la descripción de las funciones**. Importantísimo. 
 
 
