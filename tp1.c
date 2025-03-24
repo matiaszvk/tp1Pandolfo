@@ -15,8 +15,7 @@ bool mostrar_pokemon_y_sumar_fuerza(struct pokemon *pokemon, void *ctx)
 
 int main(int argc, char const *argv[])
 {
-
-	// Todo este archivo es a modo de ejemplo. 
+	// Todo este archivo es a modo de ejemplo.
 	// Modificar, eliminar o agregar código según sea necesario para lograr lo pedido en el enunciado.
 
 	if (argc < 2) {

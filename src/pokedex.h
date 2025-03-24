@@ -29,6 +29,14 @@ typedef struct pokedex pokedex_t;
 
 /**
  * Crea una nueva pokedex a partir de un archivo.
+ * 
+ * Devuelve un puntero a la pokedex si se pudo abrir el archivo, o NULL en caso contrario.
+ * 
+ * Cada pokemon en el archivo debe tener el siguiente formato: id;nombre;tipo;fuerza;destreza;inteligencia
+ * 
+ * Al encontrar un pokemon inválido, se ignora y finaliza la lectura del archivo. Se leen todos los pokemon válidos del archivo y se almacenan en la pokedex. Si no se pudo leer ningún pokemon válido, se devuelve NULL.
+ * 
+
 */
 pokedex_t *pokedex_abrir(const char *archivo);
 
@@ -51,7 +59,7 @@ const struct pokemon *pokedex_buscar_pokemon_nombre(pokedex_t *pokedex,
  * Devuelve un puntero al pokemon si se encontró, o NULL en caso contrario.
 */
 const struct pokemon *pokedex_buscar_pokemon_id(pokedex_t *pokedex,
-						 unsigned id);
+						unsigned id);
 
 /**
  * Invoca la función especificada para cada pokemon en la pokedex.
