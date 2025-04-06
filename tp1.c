@@ -1,48 +1,96 @@
 #include "src/pokedex.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-bool mostrar_pokemon_y_sumar_fuerza(struct pokemon *pokemon, void *ctx)
+const char *tipo_a_string(tipo_pokemon tipo)
 {
-	unsigned *fuerza_total = ctx;
-	printf("Id: %d, Nombre: %s, Tipo: %d, Fuerza: %d, Destreza: %d, Inteligencia: %d\n",
-	       pokemon->id, pokemon->nombre, pokemon->tipo, pokemon->fuerza,
-	       pokemon->destreza, pokemon->inteligencia);
-
-	*fuerza_total += pokemon->fuerza;
+	switch (tipo) {
+	case TIPO_AGUA:
+		return "Agua";
+	case TIPO_FUEGO:
+		return "Fuego";
+	case TIPO_PLANTA:
+		return "Planta";
+	case TIPO_ROCA:
+		return "Roca";
+	case TIPO_ELECTRICO:
+		return "Eléctrico";
+	case TIPO_NORMAL:
+		return "Normal";
+	case TIPO_LUCHA:
+		return "Lucha";
+	default:
+		return "Desconocido";
+	}
+}
+bool mostrar_pokemon(struct pokemon *pokemon, void *ctx)
+{
+	printf("Id: %d, Nombre: %s, Tipo: %s, Fuerza: %d, Destreza: %d, Inteligencia: %d\n",
+	       pokemon->id, pokemon->nombre, tipo_a_string(pokemon->tipo),
+	       pokemon->fuerza, pokemon->destreza, pokemon->inteligencia);
 	return true;
 }
 
 int main(int argc, char const *argv[])
 {
-	// Todo este archivo es a modo de ejemplo.
-	// Modificar, eliminar o agregar código según sea necesario para lograr lo pedido en el enunciado.
-
-	if (argc < 2) {
-		printf("Uso: %s <archivo_pokedex.csv>\n", argv[0]);
+	if (argc < 3) {
+		printf("Uso: %s <archivo.csv> <operacion> [parametro]\n",
+		       argv[0]);
+		printf("Operaciones:\n");
+		printf("  listar_nombre\n");
+		printf("  listar_id\n");
+		printf("  buscar_id <id>\n");
+		printf("  buscar_nombre <nombre>\n");
 		return 1;
 	}
 
-	pokedex_t *pokedex = pokedex_abrir(argv[1]);
+	const char *archivo = argv[1];
+	const char *operacion = argv[2];
+
+	pokedex_t *pokedex = pokedex_abrir(archivo);
 	if (!pokedex) {
-		printf("Error al abrir el archivo %s\n", argv[1]);
+		printf("Error al abrir archivo %s\n", archivo);
 		return 1;
 	}
 
-	printf("La pokedex tiene %d pokemones\n",
-	       pokedex_cantidad_pokemones(pokedex));
-
-	unsigned fuerza_total = 0;
-
-	//Muestro los pokemon ordenados por nombre
-	printf("\nPokemones ordenados por nombre:\n");
-	pokedex_iterar_pokemones(pokedex, ITERAR_NOMBRE,
-				 mostrar_pokemon_y_sumar_fuerza, &fuerza_total);
-
-	printf("\nSi sumamos todas las fuerzas, el resultado es: %d\n",
-	       fuerza_total);
+	if (strcmp(operacion, "listar_nombre") == 0) {
+		pokedex_iterar_pokemones(pokedex, ITERAR_NOMBRE,
+					 mostrar_pokemon, NULL);
+	} else if (strcmp(operacion, "listar_id") == 0) {
+		pokedex_iterar_pokemones(pokedex, ITERAR_ID, mostrar_pokemon,
+					 NULL);
+	} else if (strcmp(operacion, "buscar_id") == 0) {
+		if (argc < 4) {
+			printf("Falta el id\n");
+		} else {
+			unsigned id = (unsigned)atoi(argv[3]);
+			const struct pokemon *poke =
+				pokedex_buscar_pokemon_id(pokedex, id);
+			if (poke) {
+				mostrar_pokemon((struct pokemon *)poke, NULL);
+			} else {
+				printf("No se encontro el Pokemon con id %u\n",
+				       id);
+			}
+		}
+	} else if (strcmp(operacion, "buscar_nombre") == 0) {
+		if (argc < 4) {
+			printf("Falta nombre\n");
+		} else {
+			const struct pokemon *poke =
+				pokedex_buscar_pokemon_nombre(pokedex, argv[3]);
+			if (poke) {
+				mostrar_pokemon((struct pokemon *)poke, NULL);
+			} else {
+				printf("No se encontro un Pokemon con nombre '%s'\n",
+				       argv[3]);
+			}
+		}
+	} else {
+		printf("Operacion '%s' invalida\n", operacion);
+	}
 
 	pokedex_destruir(pokedex);
-
 	return 0;
 }

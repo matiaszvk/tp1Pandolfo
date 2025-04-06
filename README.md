@@ -2,11 +2,11 @@
 <img width="32px" src="img/algo2.svg">
 </div>
 
-# TDA LISTA
+# TP1
 
 # ESTO ES UN TEMPLATE, COMPLETAR LO QUE HAGA FALTA, ELIMINAR LO QUE SOBRE (INCLUIDA ESTA LÍNEA)
 
-## Alumno: (Nombre Apellido) - (Padrón) - (Mail)
+## Alumno: (Nicolas Matias Sanchez) - (111447) - (nmsanchez@fi.uba.ar)
 
 - Para compilar:
 
